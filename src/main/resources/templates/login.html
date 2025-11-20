@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <section class="auth-container">
+        <img th:src="@{/images/CareerUp-Logo.png}" alt="CareerUp logo" style="height: 96px; margin-bottom: 8px;">
+        <h1 class="title-main">CareerUp</h1>
+        <form action="/login" method="post" >
+            <input type="text" name="username" id="username" placeholder="Login" required />
+            <input type="password" name="password" id="password" placeholder="Senha" required />
+            <button class="button-primary" type="submit">Login</button>
+        </form>
+        <span class="error" th:if="${param.error}">Login ou senha incorretos.</span>
+        <p class="text">Não tem uma conta ainda? <a th:href="@{/cadastro}">Cadastre-se</a></p>
+        <div class="card">
+            <h2 class="title-secondary">Dados mockados para teste:</h2>
+            <ul>
+                <li><span>Conta Gerente:</span> garibaldo.torres | <span>Senha:</span> armando123</li>
+                <li><span>Conta Usuário:</span> carlos.silva | <span>Senha:</span> carlos123</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Modal Sucesso -->
+    <div th:if="${cadastroSucesso}">
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2 class="title-secondary">✅ Cadastro realizado com sucesso!</h2>
+                <p class="text">Agora você já pode fazer login na plataforma.</p>
+                <button class="button-secondary" onclick="fechar('modal')">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+        function fechar(id) {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+    }
+</script>
+</script>
